@@ -1,2 +1,3 @@
 Idea Catalog
+0. Main - This is an interface for controlling machines in the idea catalog. 
 1. Type AaE - A machines that can turn anything into angles and create anything from angles. 

@@ -5,7 +5,7 @@ Purpose: Create machine that can read/write angles as data.
 //The machine will accept two types of input, radians and degrees.
 //First, the machine validates that the input is a double
 bool validator(dynamic value) {
-  return value is double;
+  return value is num;
 }
 
 //These functions attempt to tame errors caused by floating point numbers
@@ -30,17 +30,30 @@ double mindfulDivision(double numerator, double denominator, double epsilon) {
   }
 }
 
-//Control 1 - RESET - Convert all incoming angles to 0.0
-double Reset(double value) {
+//Control 1 - RESET - Convert all angles to 0.0
+num Reset(num value) {
   return 0.0;
 }
 
 //Control 2 - Half Right Add - Adds 45 Degrees to each input
-double HRA(double value) {
+num HRA(double value) {
   return value + 45.0;
 }
 
 //Control 3 - Half Right Sub - Subtracts 45 Degrees from each input
 double HRS(double value) {
   return value - 45.0;
+}
+
+//'Spool' of degrees that starts at 0 and ends at 180.
+class HalfSpool {
+  List<double> _angles = List.generate(180, (index) => index + 1);
+
+  List<num> load() {
+    return _angles;
+  }
+
+  List<num> call() {
+    return load();
+  }
 }
